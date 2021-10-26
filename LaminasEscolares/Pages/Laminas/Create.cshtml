@@ -1,0 +1,57 @@
+﻿@page
+@model LaminasEscolares.Pages.Laminas.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Agregar Lamina</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Lamina.Categoria" class="control-label"></label>
+                <input asp-for="Lamina.Categoria" class="form-control" />
+                <span asp-validation-for="Lamina.Categoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lamina.Reglon" class="control-label"></label>
+                <input asp-for="Lamina.Reglon" class="form-control" />
+                <span asp-validation-for="Lamina.Reglon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lamina.Lamina" class="control-label"></label>
+                <input asp-for="Lamina.Lamina" class="form-control" />
+                <span asp-validation-for="Lamina.Lamina" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="Lamina.Descripcion" class="control-label"></label>
+                <input asp-for="Lamina.Descripcion" class="form-control" />
+                <span asp-validation-for="Lamina.Descripcion" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Lamina.Cantidad" class="control-label"></label>
+                <input asp-for="Lamina.Cantidad" class="form-control" />
+                <span asp-validation-for="Lamina.Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lamina.FechaActualizacion" class="control-label"></label>
+                <input asp-for="Lamina.FechaActualizacion" class="form-control" type="date" />
+                <span asp-validation-for="Lamina.FechaActualizacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" asp-page-handler="Create" />
+                <a class="btn btn-info" asp-page="Index"> Volver</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*<div>
+    <a class="btn btn-info" asp-page="Index"> Volver</a>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

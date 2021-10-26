@@ -1,0 +1,93 @@
+﻿@page
+@model LaminasEscolares.Pages.Laminas.IndexModel
+@{
+}
+<h1>Laminas Escolares</h1>
+
+<p>
+    <a type="button" class="btn btn-primary" asp-page="Create"> Agregar Lamina</a>
+</p>
+
+<form>
+    <p>
+        <select name="categoria">
+            <option value="1">Todo</option>
+            <option value="2">Biologia</option>
+            <option value="3">Musica</option>
+        </select>
+
+        Title: <input type="text" asp-for="SearchString" />
+        <button type="submit"><i class="fa fa-search"></i></button>
+        @*<input type="submit" class="" value="Buscar" />*@
+    </p>
+</form>
+
+<table class="table" id="tablaLaminas">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.postLaminas[0].Categoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.postLaminas[0].Reglon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.postLaminas[0].Lamina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.postLaminas[0].Cantidad)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.postLaminas)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reglon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lamina)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                    <a type="button" class="btn btn-primary" asp-page-handler="SumarCantidad" asp-route-id="@item.Id">+</a>
+                    <a type="button" class="btn btn-secondary" asp-page-handler="RestarCantidad" asp-route-id="@item.Id">-</a>
+                </td>
+                <td>
+                    <a type="button" class="btn btn-info" asp-page="./Edit" asp-route-id="@item.Id">Editar</a>
+                    <a type="button" class="btn btn-danger" asp-page-handler="Remove" asp-route-id="@item.Id">Borrar</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+@*<div id="example-table"></div>*@
+
+<script>
+    var dataLaminasJson = JSON.parse('@Html.Raw(@Model.dataJson)')
+    console.log(dataLaminasJson);
+
+
+    //var table = new Tabulator("#example-table", {
+    //    data: dataLaminasJson,
+
+    //    columns: [
+    //        { title: "Cat", field: "Categoria" },
+    //        { title: "Fila", field: "Reglon", align: "right", sorter: "number" },
+    //        { title: "Lamina", field: "Lamina" },
+    //        { title: "Cantidad", field: "Cantidad", align: "center" },
+
+    //    ],
+    //});
+
+</script>
